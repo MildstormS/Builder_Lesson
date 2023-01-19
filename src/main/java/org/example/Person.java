@@ -5,28 +5,30 @@ import java.util.OptionalInt;
 
 public class Person {
 
-    protected final String name;
-    protected final String surname;
-    protected int age;
-    protected String city;
+    private String name;
+    private String surname;
+    private int age;
+    private String address;
 
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
+
     }
 
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+
     }
 
     public boolean hasAge() {
-        return age > 0;
+        return age >= 0;
     }
 
     public boolean hasAddress() {
-        return city != null;
+        return address != null;
     }
 
     public String getName() {
@@ -42,11 +44,11 @@ public class Person {
     }
 
     public String getAddress() {
-        return city;
+        return address;
     }
 
     public void setAddress(String city) {
-        this.city = city;
+        this.address = city;
     }
 
     public void happyBirthday() {
@@ -54,18 +56,18 @@ public class Person {
     }
 
     public PersonBuilder newChildBuilder() {
-        return new PersonBuilder().setSurname(surname).setAge(age).setAddress(city);
+        return new PersonBuilder().setSurname(surname).setAddress(address);
     }
 
     @Override
     public String toString() {
-        return  " " + name + " " + surname + " возрастом " + age + "год, проживающей(ий) в городе " + city;
+        return " " + name + " " + surname + " возрастом " + age + "(год) из города " + address;
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age, city);
+        return Objects.hash(name, surname, age, address);
     }
 
     @Override
@@ -76,11 +78,10 @@ public class Person {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Person person = (Person) o;
 
         return age == person.age && name.equals(person.name)
-                && surname.equals(person.surname) && Objects.equals(city, person.city);
+                && surname.equals(person.surname) && Objects.equals(address, person.address);
 
     }
 }

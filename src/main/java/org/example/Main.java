@@ -10,11 +10,15 @@ public class Main {
                 .setAddress("Сидней")
                 .build();
 
+
+        System.out.println("Person has age? " + mom.hasAge());
+        System.out.println("Person has city? " + mom.hasAddress());
+
         Person son = mom.newChildBuilder()
                 .setName("Антошка")
-                .setAge(1)
+                .setAge(2)
                 .build();
-        System.out.println("У " + mom + "  есть сын, " + son);
+        System.out.println("У " + mom + "  есть сын " + son);
 
         try {
             // Не хватает обязательных полей
@@ -25,7 +29,7 @@ public class Main {
 
         try {
             // Возраст недопустимый
-            new PersonBuilder().setAge(-100).build();
+            new PersonBuilder().setName("Анна").setSurname("Вольф").setAge(-100).build();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
