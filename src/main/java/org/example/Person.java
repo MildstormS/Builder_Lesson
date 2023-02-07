@@ -24,7 +24,7 @@ public class Person {
     }
 
     public boolean hasAge() {
-        return age >= 0;
+        return age > 0;
     }
 
     public boolean hasAddress() {
